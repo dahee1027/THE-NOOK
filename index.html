@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE NOOK - Coffee & Craft</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/customer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&family=Noto+Sans+KR:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="header">
+        <div class="logo-container">
+            <img id="logo-image" src="images/logo.png" alt="카페 로고" class="logo" onerror="this.style.display='none'">
+            <p id="subtitle" class="subtitle">coffee and craft</p>
+        </div>
+    </header>
+
+    <!-- 카테고리 탭 -->
+    <nav class="category-tabs">
+        <div class="tab-container" id="categoryTabs">
+            <!-- 카테고리는 JavaScript로 동적 생성 -->
+        </div>
+    </nav>
+
+    <!-- 메뉴 리스트 -->
+    <main class="menu-container">
+        <div id="menuList" class="menu-list">
+            <!-- 메뉴 카드들이 여기에 동적으로 추가됩니다 -->
+        </div>
+    </main>
+
+    <!-- 주문하기 버튼 (하단 고정) -->
+    <div class="order-summary-fixed" id="orderSummary">
+        <button class="order-button" id="orderButton" onclick="showOrderModal()">
+            <span>주문하기</span>
+            <span id="totalAmount" class="total-amount">₩0</span>
+        </button>
+    </div>
+
+    <!-- 주문 확인 모달 -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>주문 확인</h2>
+                <span class="close" onclick="closeOrderModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="orderItems" class="order-items">
+                    <!-- 주문 아이템들이 여기에 표시됩니다 -->
+                </div>
+                <div class="order-total">
+                    <strong>총 금액: <span id="modalTotalAmount">₩0</span></strong>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel" onclick="closeOrderModal()">취소</button>
+                <button class="btn-confirm" onclick="submitOrder()">주문 확정</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 숨은 관리자 버튼 -->
+    <div class="admin-access">
+        <button class="admin-btn" onclick="showAdminLogin()">⚙️</button>
+    </div>
+
+    <!-- 관리자 로그인 모달 -->
+    <div id="adminLoginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>관리자 접속</h2>
+                <span class="close" onclick="closeAdminLogin()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <input type="password" id="adminPassword" placeholder="비밀번호 입력" maxlength="4" 
+                       pattern="[0-9]*" inputmode="numeric">
+                <p class="error-message" id="passwordError"></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel" onclick="closeAdminLogin()">취소</button>
+                <button class="btn-confirm" onclick="checkAdminPassword()">확인</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 성공 메시지 토스트 -->
+    <div id="toast" class="toast">
+        <span id="toastMessage"></span>
+    </div>
+
+    <script src="js/common.js"></script>
+    <script src="js/customer.js"></script>
+</body>
+</html> 
